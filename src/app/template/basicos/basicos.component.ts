@@ -10,6 +10,12 @@ export class BasicosComponent {
   
   @ViewChild('miFormulario') miFormulario!: NgForm;
 
+  initForm = {
+    producto: 'Algo',
+    precio: 10,
+    existencias: 10
+  }
+
   nombreValido(): boolean {
     return this.miFormulario?.form.controls['producto']?.invalid && this.miFormulario?.form.controls['producto']?.touched;
   }
@@ -19,6 +25,11 @@ export class BasicosComponent {
   }
 
   guardar() {
-    console.log(this.miFormulario);
+    console.log('Posteo correcto');
+    this.miFormulario.resetForm({
+      producto: 'Algo',
+      precio: 0,
+      existencias: 0
+    });
   }
 }
