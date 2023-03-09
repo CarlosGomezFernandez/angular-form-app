@@ -2,15 +2,17 @@
 <hr>
 <div class="row">
     <div class="col">
-        <form autocomplete="false">
+        <form (ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario">
             <!-- Campo de producto -->
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Producto</label>
                 <div class="col-sm-9">
                     <input class="form-control"
+                           formControlName="nombre"
                            type="text"
                            placeholder="Nombre del producto">
-                    <span class="form-text text-danger">
+                    <span class="form-text text-danger"
+                          *ngIf="campoEsValido('nombre')">
                         Debe ser de 3 letras
                     </span>
                 </div>
@@ -20,9 +22,11 @@
                 <label class="col-sm-3 col-form-label">Precio</label>
                 <div class="col-sm-9">
                     <input class="form-control"
+                           formControlName="precio"
                            type="number"
                            placeholder="Precio del producto">
-                    <span class="form-text text-danger">
+                    <span class="form-text text-danger"
+                          *ngIf="campoEsValido('precio')">
                         El precio debe ser mayor o igual a 0
                     </span>
                 </div>
@@ -32,8 +36,13 @@
                 <label class="col-sm-3 col-form-label">Existencias</label>
                 <div class="col-sm-9">
                     <input class="form-control"
+                           formControlName="existencias"
                            type="number"
                            placeholder="Existencias del producto">
+                    <span class="form-text text-danger"
+                          *ngIf="campoEsValido('existencias')">
+                        Las existencias deben ser mayor o igual a 0
+                    </span>
                 </div>
             </div>
             <div class="row">
@@ -46,7 +55,7 @@
         </form>
     </div>
 </div>
-<!--
+
 <div class="row">
     <div class="col">
         <span>Valid</span>
@@ -59,4 +68,3 @@
         <pre>{{ miFormulario.value | json }}</pre>
     </div>
 </div>
--->
