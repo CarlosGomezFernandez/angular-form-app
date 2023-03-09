@@ -31,7 +31,19 @@ export class DinamicosComponent {
   }
 
   agregarFavorito() {
-    
+
+    /*
+    if(this.miFormulario.invalid) {
+      return;
+    }
+    */
+
+    this.favoritosArr.push(this.fb.control(this.nuevoFavorito.value, Validators.required));
+    this.nuevoFavorito.reset();
+  }
+
+  eliminar(index: number) {
+    this.favoritosArr.removeAt(index);
   }
 
   guardar() {
